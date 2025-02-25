@@ -1,0 +1,36 @@
+@keyframes glow {
+    0% { box-shadow: 0 0 50px #6f3da899; }
+    50% { box-shadow: 0 0 70px rgba(143, 87, 196, 0.6), 0 0 100px rgba(76, 40, 133, 0.4); }
+    100% { box-shadow: 0 0 50px rgba(130, 87, 199, 0.603); }
+}
+
+.crystal-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.crystal-glow {
+    position: absolute;
+    width: 270px;
+    height: 270px;
+    border-radius: 50%;
+    animation: glow 2s infinite alternate;
+    filter: blur(10px);
+}
+
+.crystal-ball {
+    width: 250px;
+    height: 250px;
+    position: relative;
+    overflow: hidden;
+}
+
+.crystal-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    -webkit-mask-image: radial-gradient(circle, rgba(255,255,255,1) 70%, rgba(255,255,255,0) 100%);
+    mask-image: radial-gradient(circle, rgba(255,255,255,1) 70%, rgba(255,255,255,0) 100%);
+}

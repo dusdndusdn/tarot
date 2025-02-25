@@ -1,0 +1,10 @@
+.selection-container{
+    background: radial-gradient(circle at center, #270249 20%, #430964 80%);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: "Cinzel", serif;
+}

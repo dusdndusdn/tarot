@@ -1,0 +1,19 @@
+.tarot-button{
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 60px;
+
+}
+
+
+.tarot-button:hover {
+    color: #d5b3ff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 150, 255, 0.5);
+}
