@@ -13,16 +13,16 @@
 
 .crystal-glow {
     position: absolute;
-    width: 270px;
-    height: 270px;
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
     animation: glow 2s infinite alternate;
     filter: blur(10px);
 }
 
 .crystal-ball {
-    width: 250px;
-    height: 250px;
+    width: 270px;
+    height: 270px;
     position: relative;
     overflow: hidden;
 }
