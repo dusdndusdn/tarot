@@ -45,24 +45,29 @@ function CardSelectionPage() {
 
     //select cards
     const handleCardClick = (id) => {
-        if (selectedCards.includes(id) || selectedCards.length >= 3) return; 
+        if (selectedCards.length >= 3) return; // 중복 선택 방지 & 3장 제한
 
-        const newSelectedCards = [...selectedCards, id];
+        // ✅ 70% 확률로 정방향(true), 30% 확률로 역방향(false)
+        const isUpright = Math.random() < 0.7;
+
+        const newSelectedCards = [...selectedCards, { id, isUpright }];
         setSelectedCards(newSelectedCards);
 
         setCards((prevCards) =>
             prevCards.map((card) =>
-                newSelectedCards.includes(card.id)
-                    ? { ...card, transform: "scale(1.25) rotate(0deg)" } 
+                newSelectedCards.some((selected) => selected.id === card.id)
+                    ? { ...card, transform: "scale(1.25) rotate(0deg)" }
                     : card
             )
         );
 
-        
+        // ✅ 3장이 선택되면 1.5초 후 빛 확산 효과 실행 & ResultPage로 이동
         if (newSelectedCards.length === 3) {
             setTimeout(() => {
-                setShowLightEffect(true); 
-                setTimeout(() => navigate("/result"), 1500); 
+                setShowLightEffect(true);
+                setTimeout(() => {
+                    navigate("/result", { state: { selectedCards: newSelectedCards } }); // ✅ 선택한 카드 정보 전달
+                }, 1500);
             }, 1000);
         }
     };
@@ -76,7 +81,7 @@ function CardSelectionPage() {
                         key={card.id}
                         src="/card_back.png"
                         alt="Card"
-                        className={`card-back ${selectedCards.includes(card.id) ? "selected" : ""}`}
+                        className={`card-back ${selectedCards.some((selected) => selected.id === card.id) ? "selected" : ""}`}
                         style={{
                             left: card.left,
                             top: card.top,
